@@ -62,7 +62,10 @@ bb = mean_data(:,3)
 xx = inv(AA'*AA)*AA'*bb
 
 %% only scale + bias
-
+Ax_list = [std_g_list(:,1) ones(6,1)]
+Ax_corr_para_raw = inv(Ax_list'*Ax_list)*Ax_list'*mean_data(:,1);
+AX_k = 1 / Ax_corr_para_raw(1)
+AX_b = Ax_corr_para_raw(2)
 
 
 %% save the calibration results

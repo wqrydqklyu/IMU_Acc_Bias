@@ -62,10 +62,24 @@ bb = mean_data(:,3)
 xx = inv(AA'*AA)*AA'*bb
 
 %% only scale + bias
-Ax_list = [std_g_list(:,1) ones(6,1)]
+Ax_list = [std_g_list(:,1) ones(6,1)];
 Ax_corr_para_raw = inv(Ax_list'*Ax_list)*Ax_list'*mean_data(:,1);
-AX_k = 1 / Ax_corr_para_raw(1)
-AX_b = Ax_corr_para_raw(2)
+Ax_k = 1 / Ax_corr_para_raw(1)
+Ax_b = Ax_corr_para_raw(2)
+
+Ay_list = [std_g_list(:,2) ones(6,1)];
+Ay_corr_para_raw = inv(Ay_list'*Ay_list)*Ay_list'*mean_data(:,2);
+Ay_k = 1 / Ay_corr_para_raw(1)
+Ay_b = Ay_corr_para_raw(2)
+
+Az_list = [std_g_list(:,3) ones(6,1)];
+Az_corr_para_raw = inv(Az_list'*Az_list)*Az_list'*mean_data(:,3);
+Az_k = 1 / Az_corr_para_raw(1)
+Az_b = Az_corr_para_raw(2)
+
+one_dim_cali = [Ax_k Ax_b;
+                Ay_k Ay_b;
+                Az_k Az_b]
 
 
 %% save the calibration results

@@ -1,1 +1,1 @@
-** This is the script doing accelerometer calibration **
+**This is the script doing accelerometer calibration**
